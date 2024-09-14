@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import logica.Reserva;
+
 /**
  *
  * @author nuvup
@@ -40,11 +42,15 @@ public class ListaReservasServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         HttpSession sesion = request.getSession();
+        // Obtiene la lista de reservas de la sesión del usuario
         List<Reserva> reservas = (List<Reserva>) sesion.getAttribute("Usuario");
+        // Si no existe la lista de reservas, crea una nueva
         if (reservas == null) {
             reservas = new ArrayList<>();
         }
+        // Obtiene los datos de la reserva
         sesion.setAttribute("Usuario", reservas);
+        // Redirecciona a la lista de reservas
         response.sendRedirect("lista.jsp");
     }
     @Override

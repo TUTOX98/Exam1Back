@@ -1,4 +1,4 @@
-package com.mycompany.coworking;
+package logica;
 public class Reserva {
     private int id;
     private String nombre;
@@ -6,6 +6,7 @@ public class Reserva {
     private String lugarTrabajo;
     private String horasTrabajo;
 
+    // Constructor
     public Reserva(int id, String nombre, String fecha, String lugarTrabajo, String horasTrabajo) {
         this.id = id;
         this.nombre = nombre;

@@ -1,5 +1,3 @@
-logica\claseUsuario.class
 com\mycompany\coworking\ReservaServelet.class
-com\mycompany\coworking\Reserva.class
 com\mycompany\coworking\ListaReservasServlet.class
 com\mycompany\coworking\EliminarReservaServelet.class

@@ -12,7 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.claseUsuario;
+
+import logica.Reserva;
 
 /**
  *
@@ -45,15 +46,22 @@ public class EliminarReservaServelet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        // Obtiene la lista de reservas de la sesión del usuario
         List<Reserva> ListaEliminar = (List) request.getSession().getAttribute("Usuario");
+        // Obtiene el ID de la reserva a eliminar
         int idReserva = Integer.parseInt(request.getParameter("idReserva"));
+        // Itera sobre la lista de reservas
         for (Reserva usu : ListaEliminar) {
             if (usu.getId() == idReserva) {
+                // Elimina la reserva de la lista
                 ListaEliminar.remove(usu);
+                // Salida del ciclo
                 break;
             }
         }
+        // Actualiza la lista de reservas en la sesión del usuario
         request.getSession().setAttribute("Usuario", ListaEliminar);
+        // Redirecciona a la lista de reservas
         response.sendRedirect("lista.jsp");
     }
     
